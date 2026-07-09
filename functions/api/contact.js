@@ -1,4 +1,4 @@
-const TO_ADDRESS = "enquiries@abilityit.co.uk";   // Change if you prefer support@ or another address
+const TO_ADDRESS = "enquiries@abilityit.co.uk";
 const FROM_ADDRESS = "website@abilityit.co.uk";
 
 function escapeHtml(str) {
@@ -29,7 +29,6 @@ async function handleContact(request, env) {
     return jsonResponse({ ok: false, error: "Invalid request body." }, 400);
   }
 
-  // Honeypot spam protection
   if (data.website) {
     return jsonResponse({ ok: true }, 200);
   }
@@ -46,34 +45,21 @@ async function handleContact(request, env) {
     return jsonResponse({ ok: false, error: "Name and email are required." }, 400);
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    return jsonResponse({ ok: false, error: "Please provide a valid email address." }, 400);
-  }
-
   if (!env.CF_ACCOUNT_ID || !env.CF_EMAIL_API_TOKEN) {
-    return jsonResponse({ ok: false, error: "Email service not configured yet." }, 500);
+    return jsonResponse({ ok: false, error: "Email service not configured." }, 500);
   }
 
   const subject = `New Website Enquiry from ${fullName}`;
 
-  const text = 
-    `New enquiry from Ability IT website\n\n` +
-    `Name: ${fullName}\n` +
-    `Email: ${email}\n` +
-    `Phone: ${phone || "-"}\n\n` +
-    `Message:\n${message || "-"}\n`;
+  const text = `New enquiry from Ability IT website\n\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone || "-"}\n\nMessage:\n${message || "-"}`;
 
-  const html = 
-    `<h2 style="font-family: Inter, sans-serif;">New Enquiry from Ability IT Website</h2>` +
-    `<p style="font-family: Inter, sans-serif;">` +
-    `<strong>Name:</strong> ${escapeHtml(fullName)}<br>` +
-    `<strong>Email:</strong> ${escapeHtml(email)}<br>` +
-    `<strong>Phone:</strong> ${escapeHtml(phone || "-")}` +
-    `</p>` +
-    `<p style="font-family: Inter, sans-serif;">` +
-    `<strong>Message:</strong><br>${escapeHtml(message || "-").replace(/\n/g, "<br>")}` +
-    `</p>`;
+  const html = `
+    <h2>New Enquiry from Ability IT Website</h2>
+    <p><strong>Name:</strong> ${escapeHtml(fullName)}<br>
+       <strong>Email:</strong> ${escapeHtml(email)}<br>
+       <strong>Phone:</strong> ${escapeHtml(phone || "-")}</p>
+    <p><strong>Message:</strong><br>${escapeHtml(message || "-").replace(/\n/g, "<br>")}</p>
+  `;
 
   try {
     const resp = await fetch(
@@ -94,29 +80,23 @@ async function handleContact(request, env) {
       }
     );
 
-    const result = await resp.json().catch(() => ({}));
-
-    if (!resp.ok || result.success === false) {
-      console.error("Cloudflare Email error:", result);
-      return jsonResponse({ ok: false, error: "Failed to send message. Please try again." }, 502);
+    if (!resp.ok) {
+      return jsonResponse({ ok: false, error: "Failed to send email." }, 502);
     }
 
     return jsonResponse({ ok: true }, 200);
   } catch (err) {
-    console.error("Contact form error:", err);
-    return jsonResponse({ ok: false, error: "Failed to send message. Please try again." }, 500);
+    console.error(err);
+    return jsonResponse({ ok: false, error: "Internal server error." }, 500);
   }
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const url = new URL(request.url);
-    
     if (url.pathname === "/api/contact") {
       return handleContact(request, env);
     }
-    
-    // Serve static assets (important for Pages)
     return env.ASSETS.fetch(request);
   }
 };

@@ -2,7 +2,12 @@ const TO_ADDRESS = "enquiries@abilityit.co.uk";
 const FROM_ADDRESS = "website@abilityit.co.uk";
 
 function escapeHtml(str) {
-  return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 export default {
@@ -35,14 +40,34 @@ export default {
 
     try {
       const subject = `New Website Enquiry from ${fullName}`;
-      const text = `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone || "-"}\n\nMessage:\n${message || "-"}`;
+
+      const text = `New enquiry from Ability IT website\n\n` +
+        `Name: ${fullName}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone || "Not provided"}\n\n` +
+        `Message:\n${message || "No message provided"}\n`;
 
       const html = `
-        <h2>New Enquiry from Ability IT Website</h2>
-        <p><strong>Name:</strong> ${escapeHtml(fullName)}<br>
-           <strong>Email:</strong> ${escapeHtml(email)}<br>
-           <strong>Phone:</strong> ${escapeHtml(phone || "-")}</p>
-        <p><strong>Message:</strong><br>${escapeHtml(message || "-").replace(/\n/g, "<br>")}</p>
+        <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
+            New Website Enquiry
+          </h2>
+          
+          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
+          </div>
+          
+          <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="font-weight: 600; color: #1e3a8a;">Message:</p>
+            <p style="white-space: pre-wrap; line-height: 1.6;">${escapeHtml(message || "No message provided")}</p>
+          </div>
+          
+          <p style="color: #64748b; font-size: 0.9em; margin-top: 30px;">
+            This enquiry was sent from the Ability IT website.
+          </p>
+        </div>
       `;
 
       const resp = await fetch(
@@ -63,19 +88,16 @@ export default {
         }
       );
 
-      const result = await resp.json().catch(() => ({}));
-
       if (!resp.ok) {
-        console.error("Email API Error:", result);
-        return new Response(JSON.stringify({ ok: false, error: "Email sending failed" }), { status: 502 });
+        console.error("Email API failed:", await resp.text());
+        return new Response(JSON.stringify({ ok: false, error: "Failed to send email" }), { status: 502 });
       }
 
-      console.log("Email sent successfully to", TO_ADDRESS);
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
 
     } catch (err) {
       console.error("Contact form error:", err);
-      return new Response(JSON.stringify({ ok: false, error: err.message }), { status: 500 });
+      return new Response(JSON.stringify({ ok: false, error: "Internal error" }), { status: 500 });
     }
   }
 };

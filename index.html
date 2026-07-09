@@ -9,9 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
+        body { font-family: 'Inter', system-ui, sans-serif; }
         
         .hero-bg {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
@@ -40,10 +38,7 @@
             left: 0;
         }
 
-        /* Force smooth scrolling */
-        html {
-            scroll-behavior: smooth !important;
-        }
+        html { scroll-behavior: smooth; }
 
         .logo-img {
             height: 48px;
@@ -225,68 +220,67 @@
         </div>
     </section>
 
-<!-- Contact -->
-<section id="contact" class="py-20 bg-gray-900 text-white">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-            <p class="text-gray-400">Ready to transform your IT? Let's talk.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-12">
-            <div>
-                <div class="bg-gray-800 rounded-3xl p-8">
-                    <h3 class="font-semibold text-xl mb-6">Contact Details</h3>
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <i class="fas fa-map-marker-alt text-2xl text-blue-400 mt-1"></i>
-                            <div>
-                                <div class="font-medium">Ability IT</div>
-                                <div class="text-gray-400 text-sm">Strata House, 300 Hawthorne Avenue<br>Hull, East Yorkshire HU3 5LL</div>
-                            </div>
-                        </div>
-                        <a href="tel:01482222477" class="flex gap-4 hover:text-blue-400 transition-colors">
-                            <i class="fas fa-phone text-2xl text-blue-400 mt-1"></i>
-                            <div class="font-medium">01482 222477</div>
-                        </a>
-                        <a href="mailto:enquiries@abilityit.co.uk" class="flex gap-4 hover:text-blue-400 transition-colors">
-                            <i class="fas fa-envelope text-2xl text-blue-400 mt-1"></i>
-                            <div class="font-medium">enquiries@abilityit.co.uk</div>
-                        </a>
-                    </div>
-                </div>
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-gray-400">Ready to transform your IT? Let's talk.</p>
             </div>
             
-            <form id="contact-form" class="space-y-6">
-                <div class="grid grid-cols-2 gap-6">
-                    <input type="text" id="first-name" name="firstName" placeholder="First Name" required 
-                           class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
-                    <input type="text" id="last-name" name="lastName" placeholder="Last Name" required 
-                           class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-800 rounded-3xl p-8">
+                        <h3 class="font-semibold text-xl mb-6">Contact Details</h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <i class="fas fa-map-marker-alt text-2xl text-blue-400 mt-1"></i>
+                                <div>
+                                    <div class="font-medium">Ability IT</div>
+                                    <div class="text-gray-400 text-sm">Strata House, 300 Hawthorne Avenue<br>Hull, East Yorkshire HU3 5LL</div>
+                                </div>
+                            </div>
+                            <a href="tel:01482222477" class="flex gap-4 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone text-2xl text-blue-400 mt-1"></i>
+                                <div class="font-medium">01482 222477</div>
+                            </a>
+                            <a href="mailto:enquiries@abilityit.co.uk" class="flex gap-4 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-envelope text-2xl text-blue-400 mt-1"></i>
+                                <div class="font-medium">enquiries@abilityit.co.uk</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <input type="email" id="email" name="email" placeholder="Business Email" required 
-                       class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
-                <input type="tel" id="phone" name="phone" placeholder="Phone Number" 
-                       class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
                 
-                <!-- Honeypot (spam trap) -->
-                <input type="text" id="website" name="website" style="display:none" autocomplete="off">
-                
-                <textarea id="message" name="message" placeholder="Tell us about your requirements..." rows="5" required
-                          class="w-full bg-gray-800 border border-gray-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-500"></textarea>
-                
-                <!-- Cloudflare Turnstile -->
-                <div class="flex justify-center" id="turnstile-container"></div>
-                
-                <button type="submit" 
-                        class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-2xl font-semibold text-lg transition-colors disabled:opacity-50"
-                        id="submit-btn">
-                    Send Message
-                </button>
-            </form>
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <input type="text" id="first-name" placeholder="First Name" required 
+                               class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                        <input type="text" id="last-name" placeholder="Last Name" required 
+                               class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <input type="email" id="email" placeholder="Business Email" required 
+                           class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                    <input type="tel" id="phone" placeholder="Phone Number" 
+                           class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                    
+                    <!-- Honeypot -->
+                    <input type="text" id="website" style="display:none" autocomplete="off">
+                    
+                    <textarea id="message" placeholder="Tell us about your requirements..." rows="5" required
+                              class="w-full bg-gray-800 border border-gray-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-500"></textarea>
+                    
+                    <!-- Turnstile -->
+                    <div class="flex justify-center" id="turnstile-container"></div>
+                    
+                    <button type="submit" id="submit-btn"
+                            class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-2xl font-semibold text-lg transition-colors disabled:opacity-50">
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-black text-gray-400 py-12">
@@ -296,37 +290,66 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
-        // Robust smooth scrolling
-        function smoothScrollTo(targetId) {
-            const target = document.getElementById(targetId);
-            if (target) {
-                const navHeight = 85;
-                const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - navHeight;
+        let turnstileToken = '';
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
+        function initTurnstile() {
+            if (typeof turnstile !== "undefined") {
+                turnstile.render("#turnstile-container", {
+                    sitekey: "YOUR_TURNSTILE_SITEKEY_HERE",   // ← Replace with your real key
+                    callback: function(token) {
+                        turnstileToken = token;
+                    },
                 });
             }
         }
 
-        // Apply to all nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href').substring(1);
-                if (targetId) {
-                    e.preventDefault();
-                    smoothScrollTo(targetId);
+        document.getElementById("contact-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submit-btn");
+            const originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+
+            const formData = {
+                firstName: document.getElementById("first-name").value.trim(),
+                lastName: document.getElementById("last-name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                message: document.getElementById("message").value.trim(),
+                website: document.getElementById("website").value,
+                token: turnstileToken
+            };
+
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.ok) {
+                    alert("✅ Thank you! Your message has been sent successfully. We'll get back to you soon.");
+                    document.getElementById("contact-form").reset();
+                    if (typeof turnstile !== "undefined") turnstile.reset();
+                } else {
+                    alert("❌ " + (result.error || "Something went wrong. Please try again."));
                 }
-            });
+            } catch (error) {
+                alert("❌ Failed to send message. Please check your connection and try again.");
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
         });
 
-        function submitForm() {
-            alert("Thank you! Your message has been received. We'll get back to you shortly.");
-            document.getElementById('contact-form').reset();
-        }
+        window.onload = initTurnstile;
     </script>
 </body>
 </html>

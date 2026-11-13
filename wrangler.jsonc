@@ -15,5 +15,8 @@
     "run_worker_first": [
       "/api/*"
     ]
-  }
+  },
+  "send_email": [
+    { "name": "CONTACT_EMAIL", "destination_address": "enquiries@abilityit.co.uk" }
+  ]
 }

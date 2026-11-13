@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ability IT - Managed IT & Telecoms | Hull & UK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+       
+        body { font-family: 'Inter', system-ui, sans-serif; }
+       
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+       
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+       
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+       
+        .section-header {
+            position: relative;
+        }
+       
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: #3b82f6;
+            bottom: -10px;
+            left: 0;
+        }
+        html { scroll-behavior: smooth; }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Microsoft 365 Outage Banner -->
+    <div class="bg-red-100 border-b border-red-200 text-red-800">
+        <div class="max-w-7xl mx-auto px-6 py-3 text-sm md:text-base flex items-center justify-center gap-2 text-center">
+            <i class="fas fa-exclamation-triangle text-red-600"></i>
+            <span>
+                <strong>Service Alert:</strong> Microsoft 365 incident <strong>MO1550821</strong> is currently affecting UK users. 
+                You may be unable to connect to Outlook, Teams, SharePoint and other services. 
+                <a href="https://status.cloud.microsoft" target="_blank" rel="noopener noreferrer" class="underline font-semibold hover:text-red-900">
+                    View Microsoft status page
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="#" class="flex items-center">
+                    <img src="https://objects.downloadqs.abilityit.co.uk/Ability%20(PNG)(transparent).png"
+                         alt="Ability IT Logo"
+                         class="logo-img">
+                </a>
+            </div>
+           
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About Us</a>
+                <a href="#managed-it" class="nav-link text-gray-600 hover:text-blue-600">Managed IT Support</a>
+                <a href="#cyber-security" class="nav-link text-gray-600 hover:text-blue-600">Cyber Security</a>
+                <a href="#cyber-essentials" class="nav-link text-gray-600 hover:text-blue-600">Cyber Essentials</a>
+                <a href="#telecoms" class="nav-link text-gray-600 hover:text-blue-600">Telecoms</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact Us</a>
+            </div>
+           
+            <div class="flex items-center gap-4">
+                <a href="tel:01482222477" class="hidden sm:flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-phone"></i>
+                    <span>01482 222477</span>
+                </a>
+                <a href="https://downloadqs.abilityit.co.uk/" target="_blank"
+                   class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2">
+                    <i class="fas fa-desktop"></i>
+                    <span>Remote Support</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg text-white py-24 md:py-32">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+                No Nonsense IT Solutions
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-200">
+                Your trusted Managed Service Provider in Hull &amp; Yorkshire.
+                IT Support, Cyber Security, and Business Telecoms that let you focus on growing your business.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="bg-white text-blue-700 hover:bg-gray-100 px-8 py-4 rounded-2xl text-lg font-semibold flex items-center justify-center gap-3">
+                    <span>Get In Touch Today</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <a href="#about" class="border border-white/70 hover:bg-white/10 px-8 py-4 rounded-2xl text-lg font-semibold transition-colors">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">Since 2000</div>
+                    <h2 class="section-header text-4xl font-bold mb-6">About Ability IT</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        We are an IT and Telecoms Managed Service Provider with our Head Office in Kingston Upon Hull, offering nationwide coverage across the UK.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Established in 2000, we specialise in providing professional IT support, cyber security services, and business telecoms.
+                    </p>
+                </div>
+                <div class="bg-gray-100 rounded-3xl p-8 text-center">
+                    <div class="text-6xl font-bold text-blue-600 mb-2">25+</div>
+                    <p class="text-gray-500">Years of Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Managed IT Support -->
+    <section id="managed-it" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-header text-4xl font-bold inline-block mb-4">Managed IT Support</h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">All-inclusive support packages designed to keep your business running smoothly.</p>
+            </div>
+           
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">All-Inclusive Support</h3>
+                    <p class="text-gray-600">Unlimited remote, telephone, and on-site support.</p>
+                </div>
+               
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Hosted Services</h3>
+                    <p class="text-gray-600">Microsoft 365, email filtering, hosted backups, and more.</p>
+                </div>
+               
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Hardware &amp; Software</h3>
+                    <p class="text-gray-600">Servers, PCs, networking, endpoint protection & encryption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Security -->
+    <section id="cyber-security" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="section-header text-4xl font-bold mb-6">Cyber Security</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Protect your business from evolving threats with our comprehensive cyber security solutions.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-10">
+                    <div class="text-center">
+                        <div class="text-5xl font-bold text-blue-600 mb-2">99.99%</div>
+                        <p class="uppercase tracking-widest text-sm text-gray-500">Threat Protection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Essentials -->
+    <section id="cyber-essentials" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-5 py-2 rounded-2xl mb-6">
+                <i class="fas fa-certificate"></i>
+                <span class="font-semibold">Cyber Essentials Certified</span>
+            </div>
+            <h2 class="text-4xl font-bold mb-6">Cyber Essentials</h2>
+            <p class="text-xl text-gray-600">
+                Government-backed scheme that helps organisations protect themselves against common cyber threats.
+            </p>
+            <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                    class="mt-10 bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-semibold">
+                Learn More About Certification
+            </button>
+        </div>
+    </section>
+
+    <!-- Telecoms -->
+    <section id="telecoms" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5">
+                    <h2 class="section-header text-4xl font-bold mb-6">Business Telecoms</h2>
+                    <p class="text-lg text-gray-600">
+                        Modern VoIP telephone systems with more features at a lower cost.
+                    </p>
+                </div>
+                <div class="md:col-span-7 bg-gray-900 text-white rounded-3xl p-10">
+                    <div class="text-5xl font-bold">Save up to 40% on phone bills</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-gray-400">Ready to transform your IT? Let's talk.</p>
+            </div>
+           
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-800 rounded-3xl p-8">
+                        <h3 class="font-semibold text-xl mb-6">Contact Details</h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <i class="fas fa-map-marker-alt text-2xl text-blue-400 mt-1"></i>
+                                <div>
+                                    <div class="font-medium">Ability IT</div>
+                                    <div class="text-gray-400 text-sm">Strata House, 300 Hawthorn Avenue<br>Hull, East Yorkshire HU3 5LL</div>
+                                </div>
+                            </div>
+                            <a href="tel:01482222477" class="flex gap-4 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone text-2xl text-blue-400 mt-1"></i>
+                                <div class="font-medium">01482 222477</div>
+                            </a>
+                            <a href="mailto:enquiries@abilityit.co.uk" class="flex gap-4 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-envelope text-2xl text-blue-400 mt-1"></i>
+                                <div class="font-medium">enquiries@abilityit.co.uk</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+               
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <input type="text" id="first-name" placeholder="First Name" required
+                               class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                        <input type="text" id="last-name" placeholder="Last Name" required
+                               class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <input type="email" id="email" placeholder="Business Email" required
+                           class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                    <input type="tel" id="phone" placeholder="Phone Number"
+                           class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
+                   
+                    <!-- Honeypot -->
+                    <input type="text" id="website" style="display:none" autocomplete="off">
+                   
+                    <textarea id="message" placeholder="Tell us about your requirements..." rows="5" required
+                              class="w-full bg-gray-800 border border-gray-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-500"></textarea>
+                   
+                    <button type="submit" id="submit-btn"
+                            class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-2xl font-semibold text-lg transition-colors disabled:opacity-50">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-sm">&copy; 2026 Ability IT. All rights reserved.</p>
+            <p class="text-xs mt-4">Proudly serving businesses across Yorkshire and the UK.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById("submit-btn");
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+
+            const formData = {
+                firstName: document.getElementById("first-name").value.trim(),
+                lastName: document.getElementById("last-name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                message: document.getElementById("message").value.trim(),
+                website: document.getElementById("website").value
+            };
+
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                if (result.ok) {
+                    alert("✅ Thank you! Your message has been sent successfully. We'll get back to you soon.");
+                    document.getElementById("contact-form").reset();
+                } else {
+                    alert("❌ " + (result.error || "Something went wrong. Please try again."));
+                }
+            } catch (error) {
+                alert("❌ Failed to send message. Please check your connection and try again.");
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        });
+    </script>
+</body>
+</html>

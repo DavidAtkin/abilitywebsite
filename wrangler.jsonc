@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ability-it-website",
+  "name": "abilitywebsite",
   "main": "functions/api/contact.js",
   "compatibility_date": "2026-07-01",
   "observability": {

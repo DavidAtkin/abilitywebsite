@@ -43,6 +43,21 @@
             width: auto;
             max-width: 180px;
         }
+        .hp {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .form-status {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            min-height: 1.5em;
+            color: #d1d5db;
+        }
+        .form-status.ok { color: #4ade80; }
+        .form-status.err { color: #f87171; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -262,28 +277,28 @@
                     </div>
                 </div>
                
-                <form id="contact-form" class="space-y-6">
+                <form id="contact-form" class="relative space-y-6" action="/api/contact" method="POST">
+                    <div class="hp" aria-hidden="true">
+                        <label for="hp_field">Leave this empty</label>
+                        <input id="hp_field" name="hp_field" type="text" tabindex="-1" autocomplete="new-password">
+                    </div>
                     <div class="grid grid-cols-2 gap-6">
-                        <input type="text" id="first-name" placeholder="First Name" required
+                        <input type="text" id="first-name" name="firstName" placeholder="First Name" required maxlength="200" autocomplete="given-name"
                                class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
-                        <input type="text" id="last-name" placeholder="Last Name" required
+                        <input type="text" id="last-name" name="lastName" placeholder="Last Name" required maxlength="200" autocomplete="family-name"
                                class="bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
                     </div>
-                    <input type="email" id="email" placeholder="Business Email" required
+                    <input type="email" id="email" name="email" placeholder="Business Email" required maxlength="200" autocomplete="email"
                            class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
-                    <input type="tel" id="phone" placeholder="Phone Number"
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" maxlength="50" autocomplete="tel"
                            class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500">
-                   
-                    <!-- Honeypot -->
-                    <input type="text" id="website" style="display:none" autocomplete="off">
-                   
-                    <textarea id="message" placeholder="Tell us about your requirements..." rows="5" required
+                    <textarea id="message" name="message" placeholder="Tell us about your requirements..." rows="5" required maxlength="5000"
                               class="w-full bg-gray-800 border border-gray-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-500"></textarea>
-                   
                     <button type="submit" id="submit-btn"
                             class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-2xl font-semibold text-lg transition-colors disabled:opacity-50">
                         Send Message
                     </button>
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>
@@ -299,41 +314,43 @@
 
     <!-- Scripts -->
     <script>
-        document.getElementById("contact-form").addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById("submit-btn");
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Sending...";
-
-            const formData = {
-                firstName: document.getElementById("first-name").value.trim(),
-                lastName: document.getElementById("last-name").value.trim(),
-                email: document.getElementById("email").value.trim(),
-                phone: document.getElementById("phone").value.trim(),
-                message: document.getElementById("message").value.trim(),
-                website: document.getElementById("website").value
-            };
-
-            try {
-                const response = await fetch("/api/contact", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData)
-                });
-                const result = await response.json();
-                if (result.ok) {
-                    alert("✅ Thank you! Your message has been sent successfully. We'll get back to you soon.");
-                    document.getElementById("contact-form").reset();
-                } else {
-                    alert("❌ " + (result.error || "Something went wrong. Please try again."));
-                }
-            } catch (error) {
-                alert("❌ Failed to send message. Please check your connection and try again.");
+        (function () {
+            var f = document.getElementById("contact-form");
+            var s = document.getElementById("form-status");
+            var b = document.getElementById("submit-btn");
+            var OK = "Thank you! Your message has been sent successfully. We'll get back to you soon.";
+            var ERR = "Sorry, that didn't send. Please email enquiries@abilityit.co.uk instead.";
+            function show(msg, cls) {
+                s.textContent = msg;
+                s.className = "form-status" + (cls ? " " + cls : "");
             }
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        });
+            var sent = new URLSearchParams(location.search).get("sent");
+            if (sent === "1") show(OK, "ok");
+            else if (sent === "0") show(ERR, "err");
+            f.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var originalText = b.textContent;
+                b.disabled = true;
+                show("Sending...", "");
+                fetch(f.action, {
+                    method: "POST",
+                    body: new FormData(f),
+                    headers: { Accept: "application/json" }
+                })
+                    .then(function (r) {
+                        if (!r.ok) throw new Error(r.status);
+                        f.reset();
+                        show(OK, "ok");
+                    })
+                    .catch(function () {
+                        show(ERR, "err");
+                    })
+                    .finally(function () {
+                        b.disabled = false;
+                        b.textContent = originalText;
+                    });
+            });
+        })();
     </script>
 </body>
 </html>
